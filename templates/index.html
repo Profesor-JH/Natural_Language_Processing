@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player with Subtitles</title>
+</head>
+<body>
+    <h1>Upload a Video</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="video/*">
+        <button type="submit">Upload</button>
+    </form>
+    {% if video_file %}
+    <h2>Video with Subtitles</h2>
+    <video controls>
+        <source src="{{ video_file }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <a href="/download?filename={{ video_file }}">Download Video</a>
+    {% endif %}
+</body>
+</html>
